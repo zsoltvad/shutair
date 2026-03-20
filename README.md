@@ -68,22 +68,64 @@ cp .config/application-config.example.json data/www/application-config.json
 
 Edit `data/www/application-config.json` with your shutter channels and favorites.
 
-### 3. Upload to ESP32
+### 3. Install PlatformIO (Recommended)
 
+PlatformIO handles both sketch compilation and file system upload seamlessly.
+
+Install PlatformIO CLI:
+
+```bash
+pip install platformio
+```
+
+Or install PlatformIO IDE:
+- Download from https://platformio.org/install/ide
+
+### 4. Upload Sketch to ESP32
+
+**Using Arduino IDE:**
 1. Connect ESP32-WROOM-32E via USB
-2. Select the correct port in Arduino IDE
-3. Verify the board settings (as listed above)
-4. Compile and upload the sketch
+2. Select Board: **ESP32 Dev Module**
+3. Select the correct COM port
+4. Click Upload
 
-### 4. Upload File System
+**Using PlatformIO:**
+```bash
+cd /path/to/wifi-server
+platformio run --target upload
+```
 
-1. Go to **Tools → ESP32 Sketch Data Upload**
-2. This uploads all files in the `data/` folder to LittleFS
+### 5. Upload File System to LittleFS
 
-### 5. Access the Web Interface
+**Using PlatformIO (Recommended):**
 
-1. Check the Serial Monitor (115200 baud) for the IP address
-2. Open `http://<ESP32_IP>:8181` in your browser
+Make sure Arduino IDE is closed, then run:
+
+```bash
+cd /path/to/wifi-server
+platformio run --target uploadfs
+```
+
+If the port is not auto-detected, specify it:
+
+```bash
+platformio run --target uploadfs --upload-port /dev/cu.usbserial-1410
+```
+
+**Using Arduino IDE:**
+
+1. Install the LittleFS upload tool:
+   - Download from: https://github.com/earlephilhower/arduino-littlefs-upload/releases
+   - Extract to: `~/Documents/Arduino/tools/`
+
+2. Go to **Tools → ESP32 Sketch Data Upload**
+
+3. This uploads all files in the `data/` folder to LittleFS
+
+### 6. Access the Web Interface
+
+1. Open Serial Monitor (115200 baud) to see the ESP32's IP address
+2. Open your browser and navigate to `http://<ESP32_IP>:8181`
 3. Enter your PIN code to authenticate
 
 ## Features
