@@ -1,0 +1,22 @@
+{
+  "channelCount": 15,
+  "favorites": [{
+    "name": "🏠 - all",
+    "channels": [0]
+  }, {
+    "name": "👫 🛏",
+    "channels": [2, 3]
+  }, {
+    "name": "🧍🛏",
+    "channels": [4, 5]
+  }, {
+    "name": "🏢",
+    "channels": [6]
+  }, {
+    "name": "☀️ 🛋",
+    "channels": [7, 8, 9, 10]
+  }, {
+    "name": "🛀",
+    "channels": [1, 11]
+  }]
+}

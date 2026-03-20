@@ -1,0 +1,25 @@
+# Configuration files with sensitive data
+.config.h
+
+# SPIFFS web server files
+data/www/application-config.json
+
+# IDE and build artifacts
+.vscode/
+.pio/
+build/
+*.o
+*.a
+*.so
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+*.sublime-project
+*.sublime-workspace
+.idea/
+
+# Arduino IDE
+*.ino.bak

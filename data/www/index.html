@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>ShutAir</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="apple-touch-icon" href="icons/iphone.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="icons/iphone-x.png" sizes="120x120">
+    <link rel="shortcut icon" href="icons/android.png" sizes="196x196">
+  </head>
+
+  <body>
+    <div class="authentication">
+      <label for="password" class="authentication__label">PIN code</label>
+      <input id="password" class="authentication__password" type="password">
+    </div>
+
+    <div class="frame">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="header-left">
+          <div class="logo">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+
+          <h1>Shut<span>Air</span></h1>
+        </div>
+    
+        <div class="header-right">
+          <button class="connection"></button>
+        </div>
+      </div>
+
+      <!-- SHUTTERS -->
+      <div class="shutters">
+        <h2>Favorites</h2>
+    
+        <div class="favorite-grid">
+          <!-- FAVORITE ELEMENTS -->
+        </div>
+
+        <h2>Channels</h2>
+    
+        <div class="channel-grid">
+          <!-- CHANNEL ELEMENTS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="/scripts/network.js"></script>
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/command.js"></script>
+    <script src="/scripts/grid-factory.js"></script>
+
+    <script>
+      (async () => {
+        await shutAir.fetchApplicationConfig();
+
+        shutAir.createChannelGrid(shutAir.applicationConfig.channelCount, '.channel-grid');
+        shutAir.createFavoriteGrid(shutAir.applicationConfig.favorites, '.favorite-grid');
+
+        shutAir.authenticate('.authentication');
+      })();
+    </script>
+  </body>
+</html>
