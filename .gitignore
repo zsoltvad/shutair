@@ -1,5 +1,5 @@
 # Configuration files with sensitive data
-.config.h
+config.h
 
 # SPIFFS web server files
 data/www/application-config.json
