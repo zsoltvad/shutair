@@ -23,3 +23,4 @@ Thumbs.db
 
 # Arduino IDE
 *.ino.bak
+.config/config.h
