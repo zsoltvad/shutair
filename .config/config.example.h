@@ -17,8 +17,9 @@ const WiFiConfig WIFI_CONFIG = {
 };
 
 // Controller Configuration
+// For ESP32, transmitterPin can be any GPIO pin (e.g., GPIO 4)
 const Controller CONTROLLER_CONFIG = {
-  .transmitterPin = 4, // D2
+  .transmitterPin = 4, // GPIO 4
   .buckets = { 366, 736, 1600, 5204, 10896 },
   .id = 108289123
 };

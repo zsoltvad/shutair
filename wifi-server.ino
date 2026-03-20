@@ -1,8 +1,8 @@
 #include <RFControl.h>
-#include <ESP8266WiFi.h>
-#include <ESPAsyncTCP.h>
+#include <WiFi.h>
+#include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
-#include "FS.h"
+#include <LittleFS.h>
 #include <Wire.h>
 #include "pulse-generator.h"
 #include "command-handler.h"
@@ -19,11 +19,11 @@ Controller controller = CONTROLLER_CONFIG;
 AsyncWebServer server(SERVER_PORT);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
-  // Initialize SPIFFS
-  if (!SPIFFS.begin()) {
-    Serial.println("An Error has occurred while mounting SPIFFS");
+  // Initialize LittleFS
+  if (!LittleFS.begin()) {
+    Serial.println("An Error has occurred while mounting LittleFS");
     return;
   }
 
@@ -36,11 +36,11 @@ void setup() {
     Serial.println("Connecting to WiFi..");
   }
 
-  // Print ESP8266 Local IP Address
+  // Print ESP32 Local IP Address
   Serial.println(WiFi.localIP());
 
   server
-  .serveStatic("/", SPIFFS, "/www/")
+  .serveStatic("/", LittleFS, "/www/")
   .setDefaultFile("index.html")
   .setCacheControl("max-age=86400");
 
