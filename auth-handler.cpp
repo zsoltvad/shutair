@@ -5,6 +5,6 @@ const boolean isAuthorized(String pin, AsyncWebServerRequest *request) {
     return false;
   }
 
-  AsyncWebHeader* authorizationHeader = request->getHeader("Authorization");
+  const AsyncWebHeader* authorizationHeader = request->getHeader("Authorization");
   return authorizationHeader->value() == pin;
 }

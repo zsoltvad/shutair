@@ -23,8 +23,12 @@ void setup() {
 
   // Initialize LittleFS
   if (!LittleFS.begin()) {
-    Serial.println("An Error has occurred while mounting LittleFS");
-    return;
+    Serial.println("Failed to mount LittleFS, formatting...");
+    LittleFS.format();
+    if (!LittleFS.begin()) {
+      Serial.println("Failed to mount LittleFS after formatting");
+      return;
+    }
   }
 
   // Connect to Wi-Fi

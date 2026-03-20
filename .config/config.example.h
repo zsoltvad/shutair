@@ -1,8 +1,8 @@
 #ifndef CONFIG_EXAMPLE_H
 #define CONFIG_EXAMPLE_H
 
-#include "../controller.h"
-#include "../wifi-config.h"
+#include "controller.h"
+#include "wifi-config.h"
 
 /* ======== LOCAL CONFIGURATION TEMPLATE ======== */
 /* Copy this file to config.h and update with your local values */
