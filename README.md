@@ -33,13 +33,15 @@ In Arduino IDE, select:
 
 ### 1. Configure Local Settings
 
+The configuration file is located in the **root folder** as `config.h` and is gitignored for security (contains sensitive data).
+
 Copy the configuration template:
 
 ```bash
-cp .config/config.example.h .config/config.h
+cp .config/config.example.h config.h
 ```
 
-Edit `.config/config.h` with your local values:
+Edit `config.h` (located at the root of your project) with your local values:
 
 ```cpp
 const String AUTH_PIN = "YOUR_PIN_HERE";
@@ -60,13 +62,15 @@ const int SERVER_PORT = 8181;
 
 ### 2. Configure Web Application
 
+The web application config is located in `data/www/` and is gitignored for local customization.
+
 Copy the web application config template:
 
 ```bash
 cp .config/application-config.example.json data/www/application-config.json
 ```
 
-Edit `data/www/application-config.json` with your shutter channels and favorites.
+Edit `data/www/application-config.json` (located at `data/www/application-config.json`) with your shutter channels and favorites.
 
 ### 3. Install PlatformIO (Recommended)
 
@@ -149,8 +153,8 @@ platformio run --target uploadfs --upload-port /dev/cu.usbserial-1410
 
 ```
 wifi-server/
+├── config.h                        (local config - gitignored, root folder)
 ├── .config/
-│   ├── config.h                    (local config - gitignored)
 │   ├── config.example.h            (template)
 │   └── application-config.example.json
 ├── data/
@@ -177,7 +181,7 @@ wifi-server/
 
 ### Serial Monitor shows "Connecting to WiFi..."
 
-- Verify SSID and password in `.config/config.h`
+- Verify SSID and password in `config.h`
 - Check WiFi router is broadcasting SSID
 - Check signal strength in the area
 
